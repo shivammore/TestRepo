@@ -1,1 +1,2 @@
-change 1 in file 1
+change1 in file1
+change2 in file1
