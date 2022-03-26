@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    body {
+      text-align: center;
+    }
+    table,
+    th,
+    td {
+      width: 50%;
+      font-size: 18px;
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    tbody tr:nth-child(odd) {
+      background-color: #e0dfdf;
+    }
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    button {
+      padding: 5px;
+      margin: 15px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <table class="center" id="rateTable">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Income Rate</th>
+        </tr>
+      </thead>
+      <tbody id="tblbody">
+        <tr>
+          <td>January</td>
+          <td>5.5</td>
+        </tr>
+        <tr>
+          <td>February</td>
+          <td>5.5</td>
+        </tr>
+        <tr>
+          <td>March</td>
+          <td>4.6</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" id="button" name="button" onclick="getMonths()">
+      Get Months
+    </button>
+
+    <script>
+      function getMonths() {
+        //remove button
+        var el = document.getElementById("button");
+        el.remove();
+        //adding h2 tag
+        let element = document.querySelector("#rateTable");
+        element.insertAdjacentHTML(
+          "beforebegin",
+          "<h2>Rate table of monthly income</h2>"
+        );
+
+        //adding rows and cells
+        var table = document.getElementById("rateTable");
+        var tblBody = document.getElementById("tblbody");
+
+        var row = document.createElement("tr");
+
+        var cell1 = document.createElement("td");
+        var cellText1 = document.createTextNode("April");
+        cell1.appendChild(cellText1);
+        row.appendChild(cell1);
+
+        var cell2 = document.createElement("td");
+        var cellText2 = document.createTextNode("8");
+        cell2.appendChild(cellText2);
+        row.appendChild(cell2);
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+
+        var row = document.createElement("tr");
+
+        var cell1 = document.createElement("td");
+        var cellText1 = document.createTextNode("May");
+        cell1.appendChild(cellText1);
+        row.appendChild(cell1);
+
+        var cell2 = document.createElement("td");
+        var cellText2 = document.createTextNode("6");
+        cell2.appendChild(cellText2);
+        row.appendChild(cell2);
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+        var row = document.createElement("tr");
+
+        var cell1 = document.createElement("td");
+        var cellText1 = document.createTextNode("June");
+        cell1.appendChild(cellText1);
+        row.appendChild(cell1);
+
+        var cell2 = document.createElement("td");
+        var cellText2 = document.createTextNode("7.2");
+        cell2.appendChild(cellText2);
+        row.appendChild(cell2);
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+        var row = document.createElement("tr");
+
+        var cell1 = document.createElement("td");
+        var cellText1 = document.createTextNode("July");
+        cell1.appendChild(cellText1);
+        row.appendChild(cell1);
+
+        var cell2 = document.createElement("td");
+        var cellText2 = document.createTextNode("4.6");
+        cell2.appendChild(cellText2);
+        row.appendChild(cell2);
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+        var row = document.createElement("tr");
+
+        var cell1 = document.createElement("td");
+        var cellText1 = document.createTextNode("August");
+        cell1.appendChild(cellText1);
+        row.appendChild(cell1);
+
+        var cell2 = document.createElement("td");
+        var cellText2 = document.createTextNode("6.9");
+        cell2.appendChild(cellText2);
+        row.appendChild(cell2);
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+        var row = document.createElement("tr");
+
+        var cell1 = document.createElement("td");
+        var cellText1 = document.createTextNode("September");
+        cell1.appendChild(cellText1);
+        row.appendChild(cell1);
+
+        var cell2 = document.createElement("td");
+        var cellText2 = document.createTextNode("8.5");
+        cell2.appendChild(cellText2);
+        row.appendChild(cell2);
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+        var row = document.createElement("tr");
+
+        var cell1 = document.createElement("td");
+        var cellText1 = document.createTextNode("October");
+        cell1.appendChild(cellText1);
+        row.appendChild(cell1);
+
+        var cell2 = document.createElement("td");
+        var cellText2 = document.createTextNode("9.4");
+        cell2.appendChild(cellText2);
+        row.appendChild(cell2);
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+
+        var row = document.createElement("tr");
+
+        var cell1 = document.createElement("td");
+        var cellText1 = document.createTextNode("November");
+        cell1.appendChild(cellText1);
+        row.appendChild(cell1);
+
+        var cell2 = document.createElement("td");
+        var cellText2 = document.createTextNode("5.1");
+        cell2.appendChild(cellText2);
+        row.appendChild(cell2);
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+
+        var row = document.createElement("tr");
+
+        var cell1 = document.createElement("td");
+        var cellText1 = document.createTextNode("December");
+        cell1.appendChild(cellText1);
+        row.appendChild(cell1);
+
+        var cell2 = document.createElement("td");
+        var cellText2 = document.createTextNode("7.5");
+        cell2.appendChild(cellText2);
+        row.appendChild(cell2);
+
+        // add the row to the end of the table body
+        tblBody.appendChild(row);
+      }
+    </script>
+  </body>
+</html>
