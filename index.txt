@@ -1,32 +1,10 @@
-https://forms.office.com/Pages/DesignPage.aspx?fragment=FormId%3DzepLH6q3skmqobhSXLJX4F-7og3FDlVMhtt_IxAWn_FUNEdJT0E3M1RGOVZUTlA2U1FKTUtDU0gwRC4u%26Token%3D394906d2661247a49751ad1067b4eaf8
-<!DOCTYPE html>
-<html>
+var fs=require("fs");
 
-<head>
-    <meta charset="utf-8">
-    <!--Fill Code here-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-	<style>
-        @media(max-width: 1024px){
-            width: 100%;
-        }
-        @media(max-width: 991px){
-            width: 75%;
-        }
-        @media(max-width: 768px){
-            width: 70%;
-            display: none;
-        }
-	</style>
-    <head>
-    <body>
-        <header>
-            <h2>CONTACT ME</h2>
-            <hr>
-            First Name <input name="firstname" type="text">
-            Last Name <input name="lastname" type="text">
-            Email <input name="email" type="email">
-            Mobile <input name="mobile" type="text">
-	    </header>
-    </body>
-</html>
+fs.readFile("books.json","utf8",function(err,data){
+
+    var new_data=JSON.parse(data);
+    for(var i=0;i<new_data.length;i++){
+        
+        console.log(new_data[i]);
+    }
+})
