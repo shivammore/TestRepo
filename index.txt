@@ -5,3 +5,4 @@ fs.readFile("input.txt","utf-8",function(err,data){
     console.log(data);
 
 })
+https://onedrive.live.com/?authkey=%21ADSB0toeMMSkSVA&id=7B23CA76C7CA594A%2111900&cid=7B23CA76C7CA594A
