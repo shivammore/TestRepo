@@ -1,0 +1,296 @@
+************BASIC ASSESS-1***************************************
+
+let require:any;
+let fs=require("fs");
+fs.readFile("input.txt","utf-8",function(err,data){
+    let line=data.split("\n");
+
+    //Fill your code here
+    let jinput=JSON.parse(line[0]);
+    let author=line[1];
+    let check=false;
+
+    jinput.forEach(function(value){
+        if(value.authorName==author){
+            console.log(JSON.stringify(value))
+            check=true;
+        }
+    })
+    if(!check)
+    console.log('No books available for the authorname : '+author+'.');
+})
+
+*****************ASSESS-2**************************************************
+
+
+let require:any;
+let fs=require("fs");
+fs.readFile("input.txt","utf-8",function(err,data){
+    // Fill your code here
+    let line= parseFloat(data);
+    console.log(line.toLocaleString());
+})
+
+****************FUNCTIONS ASSESS-1****************************************
+
+let require:any;
+let fs=require("fs");
+fs.readFile("input.txt","utf-8",function(err,data){
+    let newdata = data.trim("\n");
+    let line=newdata.split("|");
+
+    //Fill your code here
+    var amount : number =1;
+    let ans = [];
+
+    for(let i=0;i<((line.length) - 1);i++){
+        let numbers = line[i].split(',');
+        ans.push(calculateDiscount(numbers[1],numbers[2]));
+    }
+
+    function calculateDiscount(price:number, gst:number = 18) : number{
+        var sum: number = 0;
+        if(!gst){
+            gst =18;
+            amount = (Number(price)*18)/100;
+            sum=sum+ Number(price)+amount;
+            return sum;
+        }
+        else{
+            amount= (Number(price)*Number(gst))/100;
+            sum= sum + Number(price) + amount;
+            return sum;
+        }
+    }
+    var sum: number = 0;
+    for(let val of ans){
+        sum = sum + (val);
+    } 
+    console.log("The Total price of all products including GST is " + sum.toFixed(2)+".");
+
+})
+
+***********************ARRAYS ASSESS-1**********************************************
+
+let require:any;
+let fs=require("fs");
+fs.readFile("input.txt","utf-8",function(err,data){
+    let line=data.split("\n");
+
+    //Fill your code here
+    var rev = line.reverse();
+    for(var index in rev){
+      console.log(rev[index]);
+    }
+
+})
+
+*********************ENUM ASSESS-1*************************************************
+
+let require:any;
+let fs=require("fs");
+fs.readFile("input.txt","utf-8",function(err,data){
+    // Fill your code here
+     data= data.split('\n');
+     let roles = data[0].split(',');
+      enum ROLE{
+          endUser = '1',
+          author = '2',
+          subAdmin = '3',
+          admin = '4'
+          }
+          let priority1 = parseInt(ROLE[roles[0]]);
+          let priority2 = parseInt(ROLE[roles[1]]);
+
+          if(priority2 < priority1){
+              console.log(roles[0] + ' has more priority than ' + roles[1]);
+          }
+          else{
+              console.log(roles[1] + ' has more priority than ' + roles[0]);
+          }
+})
+
+********************INTERFACES ASSESS-1***************************************************
+
+let require:any;
+let fs=require("fs");
+fs.readFile("input.txt","utf-8",function(err,data){
+    // Fill your code here
+    data = data.split(',');
+    data[1] = data[1].replace(/[\r\n]+/gm,``);
+    //console.log(data);
+    if(data[0].includes(data[1])){
+        console.log(data[1] + ' is a substring of ' + data[0]);
+    }else{
+        console.log(data[1] + ' is not a substring of ' + data[0]);
+    }
+})
+
+****************************CLASSES ASSESS-1**************************************
+
+let require:any;
+let fs=require("fs");
+fs.readFile("input.txt","utf-8",function(err,data){
+    // Fill your code here
+    abstract class taxCalculator{
+        tax:number
+        constructor(tax:number){
+            this.tax=tax
+        }
+        abstract calculateTax()
+    }
+
+    class Product extends taxCalculator{
+        name:string;
+        brand:string;
+        price:number;
+
+        constructor(name:string,brand:string,price:number,tax:number){
+            super(tax)
+            this.name=name
+            this.brand=brand
+            this.price=price
+        }
+
+        calculateTax(){
+            this.price+=(this.price*this.tax)/100
+            console.log("Total price of "+this.name+" "+this.brand+" is "+this.price)
+        }
+    }
+
+    let line=data.trim().split(",")
+    
+    let pro=new Product(line[0],line[1],Number(line[2]),Number(line[3]))
+
+    pro.calculateTax()
+})
+
+***********************ASSESS-2****************************************************
+
+let require:any;
+let fs=require("fs");
+fs.readFile("input.txt","utf-8",function(err,data){
+    // Fill your code here
+    data = data.split(',');
+    for(let i=0; i<data.length; i++){
+        data[i] = data[i].replace(/[\r\n]+/gm,``);
+    }
+    class Product{
+        name: string;
+        description: string;
+        price: number;
+        discount: number;
+        finalPrice: number;
+        constructor(name, description, price, discount){
+            this.name = name;
+            this.description = description;
+            this.price = price;
+            this.discount = discount;
+        }
+        claculatePrice():void{
+            this.finalPrice = this.price - (this.price*this.discount)/100;
+        }
+    }
+    class Phone extends Product{
+        ram: string;
+        rom: string;
+        processor: string;
+        osVersion: string;
+        releasedYear: string;
+        purchasedYear: string;
+        constructor(name, description, price, discount, ram, rom, processor, osVersion, releasedYear, purchasedYear){
+            super(name, description, price, discount);
+            this.ram = ram;
+            this.rom = rom;
+            this.processor = processor;
+            this.osVersion = osVersion;
+            this.releasedYear = releasedYear;
+            this.purchasedYear = purchasedYear;
+        }
+        claculatePrice(): void{
+            super.claculatePrice();
+            if(parseInt(this.releasedYear) < parseInt(this.purchasedYear)){
+                this.finalPrice = this.finalPrice - 1000;
+            }
+        }
+        display():void{
+            console.log("Product Name : "+this.name);
+            console.log("Product Brand : "+this.description);
+            console.log("Product Price : "+this.price.toFixed(2));
+            console.log("Product Discount : "+this.discount.toFixed(2));
+            console.log("Total Price : "+this.finalPrice.toFixed(2));
+            console.log("RAM : "+this.ram);
+            console.log("ROM : "+this.rom);
+            console.log("Processor : "+this.processor);
+            console.log("osVersion : "+this.osVersion);
+            console.log("Released Year : "+this.releasedYear);
+            console.log("Purchased Year : "+this.purchasedYear);
+        }
+    }
+
+    let prod = new Phone(data[0], data[1], parseFloat(data[2]), parseFloat(data[3]), data[4], data[5], data[6], data[7], data[8], data[9]);
+    prod.claculatePrice();
+    prod.display();
+})
+
+************************GENERICS ASSESS-1*******************************************************
+
+let require:any;
+let fs=require("fs");
+fs.readFile("input.txt","utf-8",function(err,data){
+    // Fill your code here
+    data = data.split(',');
+    for(let i=0; i<data.length; i++){
+        data[i] = data[i].replace(/[\r\n]+/gm,``);
+    }
+    //console.log(data);
+
+    interface User{
+        name: string
+        gender: string
+        age: string;
+        mailId: string;
+    }
+    interface Author extends User{
+        profession: string;
+    }
+    function printDetails<T extends Author>(dat: T): void{
+        console.log("Name : "+dat[0]);
+        console.log("Gender : "+dat[1]);
+        console.log("Age : "+dat[2]);
+        console.log("MailId : "+dat[3]);
+        console.log("Profession : "+dat[4]);
+    }
+    printDetails<Author>(data);
+})
+
+************************NAMESPACES ASSESS-1***************************************************************
+
+let require:any;
+let fs=require("fs");
+fs.readFile("input.txt","utf-8",function(err,data){
+    // Fill your code here
+    data = data.split(',');
+    for(let i=0; i<data.length; i++){
+        data[i] = data[i].replace(/[\r\n]+/gm,``);
+    }
+    //console.log(data);
+
+    enum vowels{
+        a = '1',
+        e = '2',
+        i = '3',
+        o = '4',
+        u = '5' 
+    };
+    if(vowels[data[0]]){
+        console.log('It is a vowel')
+    }else{
+        console.log('It is not a vowel');
+    }
+})
+
+**************************************************************************************************8
+
+
+
