@@ -1,8 +1,139 @@
-let require:any;
-let fs=require("fs");
-fs.readFile("input.txt","utf-8",function(err,data){
-    data=parseFloat(data).toExponential(2).toString();
-    console.log(data);
+///////////////////  ProductList.js
 
-})
-https://onedrive.live.com/?authkey=%21ADSB0toeMMSkSVA&id=7B23CA76C7CA594A%2111900&cid=7B23CA76C7CA594A
+import React from 'react';
+import Product from './Product';
+class ProductList extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            productsList: [{
+                id: 1, name: 'Samsung Galaxy Note 10', category: 'Mobiles', country: 'Canada', price: 11500, currencyCode: 'CAD', productImage: require('./assets/img/product1.jpg')
+            },
+            { id: 5, name: 'SkullCandy BT Inkd Plus', category: 'Bluetooth Headset', country: 'UK', price: 800, currencyCode: 'USD', productImage: require('./assets/img/product2.jpg') },
+            { id: 13, name: 'Anker Soundbuds Rise', category: 'Bluetooth Headset', country: 'Canada', price: 600, currencyCode: 'CAD', productImage: require('./assets/img/product3.jpg') },
+            { id: 8, name: 'JBL Flip 3 Bluetooth speaker', category: 'Speakers', country: 'India', price: 1400, currencyCode: 'INR', productImage: require('./assets/img/product4.jpg',) },
+            { id: 10, name: 'Conekt Volt Power Bank', category: 'Power Bank', country: 'China', price: 650, currencyCode: 'CNY', productImage: require('./assets/img/product5.jpg',) },
+            { id: 18, name: 'Apple Watch Series', category: 'Watch', country: 'China', price: 640, currencyCode: 'CNY', productImage: require('./assets/img/product6.jpg',) },
+            { id: 20, name: 'IBall Slide Spirit X2', category: 'Tablets', country: 'India', price: 9000, currencyCode: 'INR', productImage: require('./assets/img/product7.jpg',) },
+            { id: 22, name: 'Skullcandy Set 2.0 ', category: 'Headset', country: 'China', price: 900, currencyCode: 'CNY', productImage: require('./assets/img/product8.jpg',) }]
+            ,
+            obj2: {}
+            ,
+            flag: false
+        }
+    }
+
+    gproduct0 = () => {
+
+        this.setState({
+            obj2: {
+                id: 1, name: 'Samsung Galaxy Note 10', category: 'Mobiles', country: 'Canada', price: 11500, currencyCode: 'CAD', productImage: require('./assets/img/product1.jpg')
+            }
+            , flag: true
+        })
+    }
+    gproduct1 = () => {
+        this.setState({
+            obj2: { id: 5, name: 'SkullCandy BT Inkd Plus', category: 'Bluetooth Headset', country: 'UK', price: 800, currencyCode: 'USD', productImage: require('./assets/img/product2.jpg') }
+            , flag: true
+        })
+    }
+
+    gproduct2 = () => {
+        this.setState({
+            obj2: { id: 13, name: 'Anker Soundbuds Rise', category: 'Bluetooth Headset', country: 'Canada', price: 600, currencyCode: 'CAD', productImage: require('./assets/img/product3.jpg') }, flag: true
+        })
+    }
+
+    gproduct3 = () => {
+        this.setState({
+            obj2: { id: 8, name: 'JBL Flip 3 Bluetooth speaker', category: 'Speakers', country: 'India', price: 1400, currencyCode: 'INR', productImage: require('./assets/img/product4.jpg',) }, flag: true
+        })
+    }
+
+    gproduct4 = () => {
+        this.setState({
+            obj2: { id: 10, name: 'Conekt Volt Power Bank', category: 'Power Bank', country: 'China', price: 650, currencyCode: 'CNY', productImage: require('./assets/img/product5.jpg',) }, flag: true
+        })
+    }
+
+    gproduct5 = () => {
+        this.setState({
+            obj2: { id: 18, name: 'Apple Watch Series', category: 'Watch', country: 'China', price: 640, currencyCode: 'CNY', productImage: require('./assets/img/product6.jpg',) }, flag: true
+        })
+    }
+
+    gproduct6 = () => {
+        this.setState({
+            obj2: { id: 20, name: 'IBall Slide Spirit X2', category: 'Tablets', country: 'India', price: 9000, currencyCode: 'INR', productImage: require('./assets/img/product7.jpg',) }, flag: true
+        })
+    }
+
+    gproduct7 = () => {
+        this.setState({
+            obj2: { id: 22, name: 'Skullcandy Set 2.0 ', category: 'Headset', country: 'China', price: 900, currencyCode: 'CNY', productImage: require('./assets/img/product8.jpg',) }, flag: true
+        })
+    }
+
+
+
+    render() {
+
+        var button;
+        if (this.state.flag) {
+            button =  <Product product={this.state.obj2} />;
+        } else {
+            button = <></>;
+        }
+        return (
+            <div>
+
+
+
+                <ul className="products">
+
+
+
+                    <li id="product0" onClick={this.gproduct0}><img id="image0" src={require('./assets/img/product1.jpg',)} />Samsung Galaxy Note 10</li>
+
+
+                    <li id="product1" onClick={this.gproduct1}>   <img id="image1" src={require('./assets/img/product2.jpg',)} />SkullCandy BT Inkd Plus</li>
+
+
+                    <li id="product2" onClick={this.gproduct2}> <img id="image2" src={require('./assets/img/product3.jpg',)} />Anker Soundbuds Rise</li>
+
+
+                    <li id="product3" onClick={this.gproduct3}><img id="image3" src={require('./assets/img/product4.jpg',)} />JBL Flip 3 Bluetooth speaker</li>
+
+
+                    <li id="product4" onClick={this.gproduct4}> <img id="image4" src={require('./assets/img/product5.jpg',)} />Conekt Volt Power Bank</li>
+
+
+                    <li id="product5" onClick={this.gproduct5}><img id="image5" src={require('./assets/img/product6.jpg',)} />Apple Watch Series</li>
+
+
+                    <li id="product6" onClick={this.gproduct6}><img id="image6" src={require('./assets/img/product7.jpg',)} />IBall Slide Spirit X2</li>
+
+
+                    <li id="product7" onClick={this.gproduct7}><img id="image7" src={require('./assets/img/product8.jpg',)} />Skullcandy Set 2.0 </li>
+
+
+
+
+                </ul>
+
+
+               
+
+
+      {button}
+
+
+
+
+            </div>
+        )
+    }
+}
+export default ProductList;
