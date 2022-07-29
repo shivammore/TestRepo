@@ -1,137 +1,79 @@
-//Fill your code
- fs = require('fs');
-var input = fs.readFileSync('books.json').toString().replace(/[\r]+/gm,``).trim().split('\n');
+import React, {useState}  from "react";
+import machineList from "./machineList.json";
 
+function SelectMachine(){
+    const [machineName, setMachineName] = useState("");
+    const [machineType, setMachineType] = useState("");
+    const [machineCount, setMachineCount] = useState("");
 
+    const [id, setId] = useState("");
+    const [message, setMessage] = useState("");
 
+    function displayMessage(){
+        machineList.forEach((machine)=> {
+            if(machine.machineType == machineType){
+                if(machineCountc> machine.availableMachines){
+                    setId("failure");
+                    setMessage(`Sorry only ${machine.availableMachines} are available`);
+                }
+                else{
+                    setId("success");
+                    setMessage(`${machineCount} machines approved for your team.`)
+                } 
+                machine.availableMachines=machine.availableMachines-machineCount
 
-
-
-
-
-
-
-=============sign-in.html==========
-<html>
-    <head>
-        <style>
-            body
-            {
-                background-color:#56A5EC;
-                color : white;
-                font-size : 30px;
             }
-            td
-            {
-                font-size: 20px;
-            }
-            table 
-            {
-                padding-top:20px;
-            }
-            button
-            {
-                background-color: white;
-                border: none;
-                font-size: 20px;
-                padding: 5px;
-                width: 126px;
-                text-align: center;
-                color: #0372d6;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- fill your code-->
-        <h1>Registration</h1>
-        <form action="/signup" method="POST">
-            <div>
-                <label for="name">Name</label> <input name="name" id="name"/><br/>
-            </div>
-            <div>
-                <label for="name">Contact</label> <input name="contact" id="contact"/><br/> 
-            </div>
-            <div>
-                <label for="email">Email</label> <input name="email" id="email"/><br/>
-            </div>
-            <a href="/expressproject"><button type="submit" id="signup">Signup</button>
-            </a>
-            <!-- <button type="submit" id="signup">Signup</button> -->
-        </form>
-    </body>
-</html>
+            
+        });
+    }
+}
 
 
-===================homepage.html================
-<html>
-    <head>
-        <style>
-            body
-            {
-                background-color:#56A5EC;
-                color : white;
-                font-size : 35px;
-                padding : 50px;
-            }
-            #register
-            {
-                position: relative;
-                background-color: white;
-                border: none;
-                font-size: 25px;
-                padding: 15px;
-                width: 150px;
-                text-align: center;
-                transition-duration: 0.4s;
-                text-decoration: none;
-                overflow: hidden;
-                cursor: pointer;
-                color: #0372d6;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- fill your code-->
-        <h1>Welcome to Evenier</h1>
-        <a href="/signup">
-        <button id="register">Register</button>
-        </a>
-    </body>
-</html>
+return(
+    <div>
+    <header>Select Your Machine</header>
+    {console.log(machineList)}
+    <table>
+    <thead>
+    <th>Machine Type</th>
+    <th>Processor</th>
+    <th>Platform</th>
+    <th>Primary Memory</th>
+    </thead>
 
+{machineList.map((machineCount){
+    return(
+        <tr key={machine.machineId}>
+        <td id={'machineType${machine.machineId}'}>
+            {machine.machineType}
+        </td>
+        <td id={'processor${machine.machineId}'}>{machine.processor}</td>
+        <td id={'platform${machine.machineId}'}>{machine.platfrom}</td>
+        <td id={'primaryMemory${machine.machineId}'}>
+            {machine.primaryMmemory}
+        </td>
+        </tr>
+    );
+})}
+</table>
 
-===========app.js=================
-var express = require('express')
-const bodyparser = require('body-parser');
+</div>
+<p>Give your team name, machine type and count</p>
+    Team Name{" "}
+    <input type="text" id="teamName" onchange={(e) => setMachineName(e.target.value)}></input>
+    Machine Type{" "}
+    <input type="text" id="machineType" onchange={(e)=>setMachine(e.target.value)}></input>
+    Machine Count{""}
+    <input type={number} id="machineCount" onchange={(e)=>setMachineCount(e.target.value)}></input>
 
-var app = express()
-app.set('port', process.env.PORT || 3000)
-const path = require('path');
-
-const user = [];
-
-app.use(bodyparser.urlencoded({extended: true}))
-
-app.get('/home',(req,res) => {
-    res.sendFile(path.join(__dirname+'/homepage.html'));
-})
-
-app.get('/signup',(req,res) => {
-    // res.render("signin")
-    res.sendFile(path.join(__dirname+'/signin.html'));
-})
-
-app.post('/signup',function(req,res) {
-    console.log('req.body = ',req.body)
-    user.push({
-        name : req.body.name,
-        contact : req.body.contact,
-        email : req.body.email
-    })
-    console.log('user = ',user)
-    res.redirect('expressproject')
-})
-app.get('/expressproject', (req,res)=>{
-    res.send(user[0])
-})
-app.listen(app.get('port'))
+<button id="submit" onClick={displayMessage}>
+Submit
+</button>
+{
+    id!=""?p id={id}>{message}</p>:""
+}
+</div>
+</div>
+);
+}
+export default SelectMachine;
