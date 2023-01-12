@@ -1,1 +1,26 @@
-wqfwefwefwefw
+
+export OUTPUT_SESSION_FW_FILE_NAME=oc-session-outcome.fw
+export OUTPUT_EDIT_FILE_NAME=oc-editlog.psv
+export SUCCESSFULL_CYCLE_EXECUTION_FLAG=_SUCCESS
+export ONLINE_DATA_OUTPUT_FILE_NAME=oc-online-session-file.psv
+
+#
+# Input file names.
+#
+export INPUT_PEOPLE_FILE_NAME=oc-people-session-outcome.psv
+export INPUT_SESSION_FILE_NAME=oc-session-outcome.psv
+export INPUT_METRIC_FILE_NAME=oc-metrics.psv
+export ATRIA_NGI_STATIC_PARAMETERS_EXTRACT_FILE=ngi-parameters-on.psv
+export ONLINE_DATA_INPUT_FILE_NAME=oc-online-session-file.fw
+
+
+#
+# Online session file path.
+#
+export ONLINE_USER=comtel
+export ONLINE_DATA_SERVER_IP=10.0.0.16
+export ONLINE_DATA_CONNECT=${ONLINE_USER}@${ONLINE_DATA_SERVER_IP}
+#export ONLINE_DATA_INPUT_FILE_PATH=/usr/adp_schema/laxmij/atria-ngi/BE0260.tablet.final
+export ONLINE_DATA_INPUT_FILE_PATH=/usr/adp_schema/laxmij/atria-ngi/be0260.fmdp.final
+#
+#
